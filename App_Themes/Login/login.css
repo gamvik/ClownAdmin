@@ -24,7 +24,13 @@ body, html {
 	color: #4B5563;
 	margin: 0;
 	padding: 0;
-	background-color: #E8ECF0;
+	background-color: #FFF1D6;
+	background-image:
+		radial-gradient(circle, #F05A73 2px, transparent 2.5px),
+		radial-gradient(circle, #F5B82E 2px, transparent 2.5px),
+		radial-gradient(circle, #41B8B0 2px, transparent 2.5px);
+	background-size: 68px 68px, 92px 92px, 116px 116px;
+	background-position: 8px 14px, 42px 50px, 12px 64px;
 	width: 100%;
 	height: 100%;
 }
@@ -41,14 +47,48 @@ body {
 
 div.loginInfoBox {
 	width: 480px;
-	background-color: #1F2933;
-	border-radius: 8px 0 0 8px;
+	background-color: #33235D;
+	background-image:
+		radial-gradient(circle at 12% 14%, #F5B82E 0 7px, transparent 7.5px),
+		radial-gradient(circle at 85% 22%, #F05A73 0 9px, transparent 9.5px),
+		radial-gradient(circle at 25% 78%, #41B8B0 0 7px, transparent 7.5px),
+		linear-gradient(145deg, #33235D, #51265F);
+	border-radius: 16px 0 0 16px;
 	padding: 40px;
 	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
 	animation: fadeInDown 0.75s ease 0.5s both;
 	display: flex;
 	flex-direction: column;
 	z-index: 2;
+}
+
+div.loginInfoBox::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 13px;
+	background: repeating-linear-gradient(90deg, #F05A73 0 18px, #FFF1D6 18px 36px, #41B8B0 36px 54px, #FFF1D6 54px 72px, #F5B82E 72px 90px, #FFF1D6 90px 108px);
+}
+
+div.loginInfoBox::after {
+	content: "★";
+	position: absolute;
+	top: 48%;
+	right: 30px;
+	color: #F5B82E;
+	font-size: 34px;
+	transform: rotate(18deg);
+	text-shadow: 2px 3px 0 #F05A73;
+}
+
+div.loginLogobox,
+div.generalInfo {
+	position: relative;
+	z-index: 1;
 }
 
 div#content {
@@ -67,15 +107,34 @@ div#content div#loginBox {
 	box-sizing: border-box;
 	z-index: 1;
 	position: relative;
-	background-color: #FAFBFC;
-	border-radius: 0 8px 8px 0;
+	background-color: #FFFCF5;
+	border-radius: 0 28px 16px 0;
+	background-image:
+		radial-gradient(circle at 94% 9%, #F5B82E 0 4px, transparent 4.5px),
+		radial-gradient(circle at 88% 13%, #F05A73 0 3px, transparent 3.5px),
+		radial-gradient(circle at 96% 18%, #41B8B0 0 3px, transparent 3.5px);
+	box-shadow: 0 18px 50px #35204B26;
 	animation: fadeInDown 0.75s ease 0.5s both;
 	display: flex;
 	flex-direction: column;
 }
 
 div.loginTextBox h2 {
-	color: #1F2933;
+	color: #33235D;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+div.loginTextBox h2::after {
+	content: "";
+	width: 23px;
+	height: 23px;
+	flex: 0 0 23px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 30%, #FFE3D8 0 3px, #FF8790 4px 7px, #E93659 8px);
+	box-shadow: 0 3px 0 #B72D4B, 0 5px 9px #D84B6555;
+	transform: rotate(-8deg);
 }
 
 div.loginTextBox p {
@@ -128,15 +187,30 @@ div.loginLogobox {
 }
 
 div.loginLogobox h3 {
-	color: #fff;
-	font-size: 22px;
+	color: #33235D;
+	font-size: 19px;
 	margin: 0;
 	font-weight: 600;
+	background: #F5B82E;
+	border: 3px solid #FFF1D6;
+	border-radius: 50%;
+	width: 52px;
+	height: 52px;
+	display: grid;
+	place-items: center;
+	transform: rotate(8deg);
+	box-shadow: 0 4px 0 #D88F32;
+	text-shadow: 1px 1px 0 #FFF1D6;
+}
+
+div.loginLogobox .e37logo {
+	transform: rotate(-9deg) scale(1.2);
+	filter: drop-shadow(2px 3px 0 #F05A73);
 }
 
 div.generalInfo {
 	margin-top: auto;
-	border-top: 1px solid #FFFFFF1A;
+	border-top: 1px solid #FFFFFF33;
 	padding-top: 20px;
 }
 
@@ -151,9 +225,10 @@ div.generalInfo p {
 
 div.generalInfo > p:first-of-type {
 	font-weight: 600;
-	letter-spacing: 14%;
+	letter-spacing: 0.14em;
 	font-size: 10px;
 	margin: 0 0 14px 0;
+	color: #F5B82E;
 }
 
 div.generalInfo > p:last-of-type {
@@ -161,7 +236,7 @@ div.generalInfo > p:last-of-type {
 }
 
 div.generalInfo > a {
-	color: #5CA8CCEB;
+	color: #8BE0D6;
 	font-weight: 600;
 	font-size: 13px;
 }
@@ -179,11 +254,11 @@ input.text {
 	height: 27px;
 	color: #444;
 	padding: 5px 12px 6px 12px;
-	background-color: #F7F9FB;
-	border: 1px solid #D2D8E0;
+	background-color: #FFFDF8;
+	border: 1px solid #E8DCC6;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;
+	border-radius: 8px;
 	outline: none;
 	-webkit-transition: all 0.25s ease-in-out;
 	-moz-transition: all 0.25s ease-in-out;
@@ -192,9 +267,10 @@ input.text {
 }
 
 input.text:focus {
-    -webkit-box-shadow: inset 0 0 3px #333333;
-    -moz-box-shadow: inset 0 0 3px #333 0 0 3px #333;
-    box-shadow: inset 0 0 3px #333333;
+	border-color: #41B8B0;
+	-webkit-box-shadow: 0 0 0 3px #41B8B033;
+	-moz-box-shadow: 0 0 0 3px #41B8B033;
+	box-shadow: 0 0 0 3px #41B8B033;
 }
 
 textarea
@@ -315,29 +391,36 @@ h2 {
 .btnLogin {
 	position: relative;
 	margin: 20px 0;
-	background-color: #3F8DBA;
+	background:
+		repeating-linear-gradient(135deg, #FFFFFF22 0 8px, transparent 8px 16px),
+		linear-gradient(100deg, #E94865, #F17648 55%, #F5B82E);
 	border: unset;
-	border-radius: 4px;
+	border: 2px solid #FFF7E8;
+	border-radius: 18px 8px 18px 8px;
 	color: #fff;
 	font-size: 14px;
 	font-weight: 600;
 	padding: 14px;
 	cursor: pointer;
-	transition: opacity ease-out 0.2s;
+	transition: opacity ease-out 0.2s, transform ease-out 0.2s;
+	box-shadow: 0 5px 0 #B73352, 0 8px 16px #B7335233, inset 0 0 0 2px #FFFFFF55;
+	text-shadow: 0 1px 2px #7A293D77;
+	letter-spacing: 0.04em;
 }
 
 .btnLogin:hover {
-	opacity: 0.8;
+	opacity: 1;
+	transform: translateY(-2px) rotate(-1deg);
 }
 
 a {
 	text-decoration: none;
-	color: #3F8DBA;
+	color: #D74361;
 	transition: color ease-out 0.2s;
 }
 
 a:hover {
-	color:#9CA3AF !important;
+	color: #A62F51 !important;
 }
 
 a img
@@ -495,7 +578,7 @@ div.systemMessage {
 		min-height: 100vh;
 		justify-content: flex-start;
 		align-items: center;
-		background-color: #FAFBFC;
+		background-color: #FFFCF5;
 	}
 
 	div.loginInfoBox {
